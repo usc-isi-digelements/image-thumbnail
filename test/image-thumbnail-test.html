@@ -1,0 +1,95 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../image-thumbnail.html">
+</head>
+
+<body>
+  <test-fixture id="image-thumbnail-fixture">
+    <template>
+      <image-thumbnail></image-thumbnail>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('image-thumbnail tests without properties', function() {
+      var component;
+
+      setup(function() {
+        component = fixture('image-thumbnail-fixture');
+      });
+
+      test('properties set to default values', function() {
+        expect(component.source).to.equal('');
+        expect(component.styleClass).to.equal('');
+        expect(component.clickProperty).to.equal('onClick');
+        expect(component.clickListener).to.exist;
+        expect(component.clickListener).to.be.an('Object');
+        expect(component.clickListener.onClick).to.exist;
+        expect(component.clickListener.onClick).to.be.a('Function');
+        expect(component.clickValue).to.equal(0);
+      });
+
+      test('does show iron-image', function() {
+        expect(component.$$('iron-image')).to.exist;
+      });
+
+      test('onClick does call clickListener.onClick', function(done) {
+        component.clickListener = {
+          onClick: function(clickValue) {
+            expect(clickValue).to.equal(0);
+            done();
+          }
+        };
+        component.onClick();
+      });
+    });
+
+    suite('image-thumbnail tests with properties', function() {
+      var component;
+
+      setup(function(done) {
+        component = fixture('image-thumbnail-fixture');
+        component.source = 'mySource';
+        component.styleClass = 'myStyleClass';
+        component.clickProperty = 'myProperty';
+        component.clickListener = {
+          myProperty: function() {}
+        };
+        component.clickValue = 5;
+        flush(function() {
+          done();
+        });
+      });
+
+      test('properties set to correct values', function() {
+        expect(component.source).to.equal('mySource');
+        expect(component.styleClass).to.equal('myStyleClass');
+        expect(component.clickProperty).to.equal('myProperty');
+        expect(component.clickListener).to.exist;
+        expect(component.clickListener).to.be.an('Object');
+        expect(component.clickListener.myProperty).to.exist;
+        expect(component.clickListener.myProperty).to.be.a('Function');
+        expect(component.clickValue).to.equal(5);
+      });
+
+      test('does show iron-image', function() {
+        expect(component.$$('iron-image')).to.exist;
+      });
+
+      test('onClick does call clickListener[clickProperty] with clickValue', function(done) {
+        component.clickListener = {
+          myProperty: function(clickValue) {
+            expect(clickValue).to.equal(5);
+            done();
+          }
+        };
+        component.onClick();
+      });
+    });
+  </script>
+</body>
+</html>

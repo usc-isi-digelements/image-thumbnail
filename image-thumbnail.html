@@ -1,0 +1,110 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<!--
+A polymer web component that shows a stylized image thumbnail.
+
+Example:
+
+        <image-thumbnail
+          source="http://source"
+          style-class="style-class"
+          click-listener="[[listener]]">
+        </image-thumbnail>
+
+@demo demo/index.html
+-->
+
+<dom-module id="image-thumbnail">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-button {
+        margin: 0;
+        padding: 0;
+      }
+
+      iron-image {
+        --iron-image-width: 100%;
+        --iron-image-height: 100%;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+
+    <paper-button class="image-button" data-dialog="[[source]]" on-tap="onClick">
+      <iron-image class$="[[styleClass]]" src="[[source]]" sizing="contain"></iron-image>
+    </paper-button>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'image-thumbnail',
+
+      properties: {
+        /**
+         * The source URL of the image.
+         */
+        source: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * The style class of the image.
+         */
+        styleClass: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * An object with a function property called if the image is clicked or tapped.
+         * The name of the property in the object is defined in clickProperty.
+         */
+        clickListener: {
+          type: Object,
+          value: function() {
+            return {
+              onClick: function() {}
+            };
+          }
+        },
+
+        /**
+         * The name of the function property in clickListener.
+         */
+        clickProperty: {
+          type: String,
+          value: 'onClick'
+        },
+
+        /**
+         * The value to be given to the clickListener.
+         */
+        clickValue: {
+          type: Number,
+          value: 0
+        }
+      },
+
+      /**
+       * Calls clickListener[clickProperty] with the argument clickValue whenever the image is clicked or tapped.
+       */
+      onClick: function() {
+        this.clickListener[this.clickProperty](parseInt(this.clickValue));
+      }
+    });
+  })();
+  </script>
+</dom-module>
