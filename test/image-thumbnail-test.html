@@ -18,8 +18,11 @@
     suite('image-thumbnail tests without properties', function() {
       var component;
 
-      setup(function() {
+      setup(function(done) {
         component = fixture('image-thumbnail-fixture');
+        flush(function() {
+          done();
+        });
       });
 
       test('properties set to default values', function() {
@@ -34,7 +37,9 @@
       });
 
       test('does show iron-image', function() {
-        expect(component.$$('iron-image')).to.exist;
+        var image = component.$$('iron-image');
+        expect(image).to.exist;
+        expect(image.src).to.equal('');
       });
 
       test('onClick does call clickListener.onClick', function(done) {
@@ -77,7 +82,10 @@
       });
 
       test('does show iron-image', function() {
-        expect(component.$$('iron-image')).to.exist;
+        var image = component.$$('iron-image');
+        expect(image).to.exist;
+        expect(image.src).to.equal('mySource');
+        expect(image).to.equal(component.$$('.myStyleClass'));
       });
 
       test('onClick does call clickListener[clickProperty] with clickValue', function(done) {
