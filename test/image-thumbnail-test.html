@@ -36,10 +36,17 @@
         expect(component.clickValue).to.equal(0);
       });
 
-      test('does show iron-image', function() {
+      test('does show paper-button and iron-image', function() {
+        var button = component.$$('paper-button');
         var image = component.$$('iron-image');
+
+        expect(button).to.exist;
         expect(image).to.exist;
+        expect(button.onTap).to.equal(component.onClick());
+        expect(button.children.length).to.equal(1);
+        expect(button.children[0]).to.equal(image);
         expect(image.src).to.equal('');
+        expect(image.sizing).to.equal('contain');
       });
 
       test('onClick does call clickListener.onClick', function(done) {
@@ -81,11 +88,18 @@
         expect(component.clickValue).to.equal(5);
       });
 
-      test('does show iron-image', function() {
+      test('does show paper-button and iron-image', function() {
+        var button = component.$$('paper-button');
         var image = component.$$('iron-image');
+
+        expect(button).to.exist;
         expect(image).to.exist;
+        expect(button.onTap).to.equal(component.onClick());
+        expect(button.children.length).to.equal(1);
+        expect(button.children[0]).to.equal(image);
         expect(image.src).to.equal('mySource');
         expect(image).to.equal(component.$$('.myStyleClass'));
+        expect(image.sizing).to.equal('contain');
       });
 
       test('onClick does call clickListener[clickProperty] with clickValue', function(done) {
