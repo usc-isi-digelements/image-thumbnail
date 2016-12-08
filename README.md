@@ -1,14 +1,14 @@
 # image-thumbnail
 
-A polymer web component that shows a stylized image thumbnail.
+A Polymer Element showing a stylized image thumbnail.
 
-Example:
+### Example
 ```html
-        <image-thumbnail
-          source="http://source"
-          style-class="style-class"
-          click-listener="[[listener]]">
-        </image-thumbnail>
+    <image-thumbnail
+        source="http://source"
+        style-class="style-class"
+        click-listener="[[listener]]">
+    </image-thumbnail>
 ```
 
 ### Dependencies

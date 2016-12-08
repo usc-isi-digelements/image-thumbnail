@@ -4,15 +4,15 @@
 <link rel="import" href="../paper-button/paper-button.html">
 
 <!--
-A polymer web component that shows a stylized image thumbnail.
+A Polymer Element showing a stylized image thumbnail.
 
 Example:
 
-        <image-thumbnail
-          source="http://source"
-          style-class="style-class"
-          click-listener="[[listener]]">
-        </image-thumbnail>
+    <image-thumbnail
+        source="http://source"
+        style-class="style-class"
+        click-listener="[[listener]]">
+    </image-thumbnail>
 
 @demo demo/index.html
 -->
@@ -40,7 +40,7 @@ Example:
       }
     </style>
 
-    <paper-button on-tap="onClick">
+    <paper-button on-tap="_onClick">
       <iron-image class$="[[styleClass]]" src="[[source]]" sizing="contain"></iron-image>
     </paper-button>
   </template>
@@ -55,6 +55,9 @@ Example:
       properties: {
         /**
          * The source URL of the image.
+         *
+         * @type {String}
+         * @default ''
          */
         source: {
           type: String,
@@ -63,6 +66,9 @@ Example:
 
         /**
          * The style class of the image.
+         *
+         * @type {String}
+         * @default ''
          */
         styleClass: {
           type: String,
@@ -72,6 +78,9 @@ Example:
         /**
          * An object with a function property called if the image is clicked or tapped.
          * The name of the property in the object is defined in clickProperty.
+         *
+         * @type {Object}
+         * @default {onClick: function() {}}
          */
         clickListener: {
           type: Object,
@@ -84,6 +93,9 @@ Example:
 
         /**
          * The name of the function property in clickListener.
+         *
+         * @type {String}
+         * @default 'onClick'
          */
         clickProperty: {
           type: String,
@@ -92,6 +104,9 @@ Example:
 
         /**
          * The value to be given to the clickListener.
+         *
+         * @type {Number}
+         * @default 0
          */
         clickValue: {
           type: Number,
@@ -101,8 +116,11 @@ Example:
 
       /**
        * Calls clickListener[clickProperty] with the argument clickValue whenever the image is clicked or tapped.
+       *
+       * @event tap
+       * @private
        */
-      onClick: function() {
+      _onClick: function() {
         this.clickListener[this.clickProperty](parseInt(this.clickValue));
       }
     });
