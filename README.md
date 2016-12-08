@@ -1,6 +1,6 @@
 # image-thumbnail
 
-A Polymer Element showing a stylized image thumbnail.
+A Polymer Element showing a stylized image thumbnail with on-click behavior.
 
 ### Example
 ```html

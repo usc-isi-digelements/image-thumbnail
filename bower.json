@@ -4,7 +4,7 @@
   "authors": [
     "Next Century Corporation"
   ],
-  "description": "A Polymer Element showing a stylized image thumbnail.",
+  "description": "A Polymer Element showing a stylized image thumbnail with on-click behavior.",
   "keywords": [
     "web-component",
     "polymer"
