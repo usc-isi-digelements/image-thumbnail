@@ -49,6 +49,11 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
         padding: 0;
       }
 
+      .highlight {
+        background-color: var(--image-highlight-color);
+        @apply(--image-highlight-style);
+      }
+
       iron-image {
         --iron-image-width: 100%;
         --iron-image-height: 100%;
@@ -57,8 +62,8 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
       }
     </style>
 
-    <paper-button on-tap="_onClick">
-      <iron-image class$="[[styleClass]]" src="[[source]]" sizing="contain"></iron-image>
+    <paper-button class$="[[_addHighlightStyleClass(highlight)]]" on-tap="_onClick">
+      <iron-image class$="[[styleClass]]" sizing="contain" src="[[source]]"></iron-image>
     </paper-button>
   </template>
 
@@ -70,6 +75,17 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
       is: 'image-thumbnail',
 
       properties: {
+        /**
+         * Whether to highlight the image.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        highlight: {
+          type: Boolean,
+          value: false
+        },
+
         /**
          * (Required)
          *
@@ -139,6 +155,17 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
           type: Number,
           value: 0
         }
+      },
+
+      /**
+       * Returns the highlight style class if needed.
+       *
+       * @param {Boolean} highlight
+       * @return {String}
+       * @private
+       */
+      _addHighlightStyleClass: function(highlight) {
+        return highlight ? 'highlight' : '';
       },
 
       /**

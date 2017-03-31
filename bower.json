@@ -1,7 +1,7 @@
 {
   "name": "image-thumbnail",
   "description": "A Polymer Element showing a stylized image thumbnail with on-click behavior.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
   "keywords": [

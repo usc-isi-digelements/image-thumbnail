@@ -36,12 +36,11 @@ limitations under the License.
 
       setup(function(done) {
         element = fixture('image-thumbnail-fixture');
-        flush(function() {
-          done();
-        });
+        flush(done);
       });
 
       test('properties set to default values', function() {
+        expect(element.highlight).to.be.false;
         expect(element.source).to.equal('');
         expect(element.styleClass).to.equal('');
         expect(element.clickProperty).to.equal('onClick');
@@ -57,10 +56,12 @@ limitations under the License.
         var image = element.$$('iron-image');
 
         expect(button).to.exist;
-        expect(image).to.exist;
         expect(button.onTap).to.equal(element._onClick());
         expect(button.children.length).to.equal(1);
         expect(button.children[0]).to.equal(image);
+        expect(button.classList.contains('highlight')).to.be.false;
+
+        expect(image).to.exist;
         expect(image.src).to.equal('');
         expect(image.sizing).to.equal('contain');
       });
@@ -73,6 +74,16 @@ limitations under the License.
           }
         };
         element._onClick();
+      });
+
+      test('setting highlight to true does add the highlight class to paper-button', function(done) {
+        element.highlight = true;
+        flush(function() {
+          var button = element.$$('paper-button');
+          expect(button).to.exist;
+          expect(button.classList.contains('highlight')).to.be.true;
+          done();
+        });
       });
     });
 
@@ -88,12 +99,11 @@ limitations under the License.
           myProperty: function() {}
         };
         element.clickValue = 5;
-        flush(function() {
-          done();
-        });
+        flush(done);
       });
 
       test('properties set to correct values', function() {
+        expect(element.highlight).to.be.false;
         expect(element.source).to.equal('mySource');
         expect(element.styleClass).to.equal('myStyleClass');
         expect(element.clickProperty).to.equal('myProperty');
@@ -109,13 +119,15 @@ limitations under the License.
         var image = element.$$('iron-image');
 
         expect(button).to.exist;
-        expect(image).to.exist;
         expect(button.onTap).to.equal(element._onClick());
         expect(button.children.length).to.equal(1);
         expect(button.children[0]).to.equal(image);
+        expect(button.classList.contains('highlight')).to.be.false;
+
+        expect(image).to.exist;
         expect(image.src).to.equal('mySource');
-        expect(image).to.equal(element.$$('.myStyleClass'));
         expect(image.sizing).to.equal('contain');
+        expect(image.classList.contains('myStyleClass')).to.be.true;
       });
 
       test('_onClick does call clickListener[clickProperty] with clickValue', function(done) {
