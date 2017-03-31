@@ -11,6 +11,15 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
 </image-thumbnail>
 ```
 
+### Styling
+
+`<image-thumbnail>` provides the following custom properties and mixins for styling:
+
+Custom property           | Description                                    | Default
+--------------------------|------------------------------------------------|--------
+`--image-highlight-color` | The background color of the highlighted image. | none
+`--image-highlight-style` | The style of the highlighted image.            | none
+
 ### Dependencies
 
 Dependencies are installed using [Bower](http://bower.io/):
