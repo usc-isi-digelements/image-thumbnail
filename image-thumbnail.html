@@ -71,7 +71,7 @@ Custom property           | Description                                    | Def
       }
     </style>
 
-    <paper-button class$="[[_addHighlightStyleClass(highlight)]]" on-tap="_onClick">
+    <paper-button class$="[[_addHighlightStyleClass(highlight)]]" title$="[[clickTitle]]" on-tap="_onClick">
       <iron-image class$="[[styleClass]]" sizing="contain" src="[[source]]"></iron-image>
     </paper-button>
   </template>
@@ -150,6 +150,19 @@ Custom property           | Description                                    | Def
         clickProperty: {
           type: String,
           value: 'onClick'
+        },
+
+        /**
+         * (Optional)
+         *
+         * The title to be given to the clickable element.
+         *
+         * @type {String}
+         * @default ''
+         */
+        clickTitle: {
+          type: String,
+          value: ''
         },
 
         /**
