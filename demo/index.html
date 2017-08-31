@@ -18,29 +18,32 @@ limitations under the License.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="../image-thumbnail.html">
 </head>
 
 <body unresolved>
-  <template is="dom-bind" id="demo">
-    <p>Source: NextCentury.png</p>
-    <p>Style Class: custom</p>
-    <p>Click Property: click</p>
-    <p>Click Listener: { click: function(value) { console.log('Clicked ' + value); } }</p>
-    <p>Click Value: 123</p>
+  <dom-bind id="demo">
+    <template is="dom-bind">
+      <p>Source: NextCentury.png</p>
+      <p>Style Class: custom</p>
+      <p>Click Property: click</p>
+      <p>Click Listener: { click: function(value) { console.log('Clicked ' + value); } }</p>
+      <p>Click Value: 123</p>
 
-    <image-thumbnail
-      source="NextCentury.png"
-      style-class="custom"
-      click-property="click"
-      click-listener="[[clickListener]]"
-      click-value="123">
-    </image-thumbnail>
-  </template>
+      <image-thumbnail
+        source="NextCentury.png"
+        style-class="custom"
+        click-property="click"
+        click-listener="[[clickListener]]"
+        click-value="123">
+      </image-thumbnail>
+    </template>
+  </dom-bind>
+
   <script>
     (function(document) {
-      var demo = document.querySelector('#demo');
+      var demo = document.querySelector('dom-bind');
       demo.clickListener = {
         click: function(value) {
           console.log('Clicked ' + value);

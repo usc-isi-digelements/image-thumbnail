@@ -76,6 +76,11 @@ limitations under the License.
         element._onClick();
       });
 
+      test('_addHighlightStyleClass does work as expected', function() {
+        expect(element._addHighlightStyleClass(true)).to.equal('highlight');
+        expect(element._addHighlightStyleClass(false)).to.equal('');
+      });
+
       test('setting highlight to true does add the highlight class to paper-button', function(done) {
         element.highlight = true;
         flush(function() {

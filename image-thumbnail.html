@@ -15,7 +15,6 @@ limitations under the License.
 -->
 
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../paper-button/paper-button.html">
 
@@ -45,8 +44,6 @@ Custom property           | Description                                    | Def
 
 <dom-module id="image-thumbnail">
   <template>
-    <style include="iron-flex iron-flex-alignment"></style>
-
     <style>
       :host {
         display: block;
@@ -60,7 +57,7 @@ Custom property           | Description                                    | Def
 
       .highlight {
         background-color: var(--image-highlight-color);
-        @apply(--image-highlight-style);
+        @apply --image-highlight-style;
       }
 
       iron-image {
