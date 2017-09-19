@@ -66,6 +66,16 @@ Custom property           | Description                                    | Def
         width: 100px;
         height: 100px;
       }
+
+      .small-blur {
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+      }
+
+      .large-blur {
+        -webkit-filter: blur(25px);
+        filter: blur(25px);
+      }
     </style>
 
     <paper-button class$="[[_addHighlightStyleClass(highlight)]]" title$="[[clickTitle]]" on-tap="_onClick">
