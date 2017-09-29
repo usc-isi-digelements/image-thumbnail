@@ -36,6 +36,7 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
 
 Custom property           | Description                                    | Default
 --------------------------|------------------------------------------------|--------
+`--image-button-color`    | The style of the button containing the image.  | none
 `--image-highlight-color` | The background color of the highlighted image. | none
 `--image-highlight-style` | The style of the highlighted image.            | none
 
@@ -53,6 +54,7 @@ Custom property           | Description                                    | Def
       paper-button {
         margin: 0;
         padding: 0;
+        @apply --image-button-style;
       }
 
       .highlight {

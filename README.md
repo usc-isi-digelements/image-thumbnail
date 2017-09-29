@@ -17,6 +17,7 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
 
 Custom property           | Description                                    | Default
 --------------------------|------------------------------------------------|--------
+`--image-button-color`    | The style of the button containing the image.  | none
 `--image-highlight-color` | The background color of the highlighted image. | none
 `--image-highlight-style` | The style of the highlighted image.            | none
 
