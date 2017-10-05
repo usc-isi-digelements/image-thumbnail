@@ -15,11 +15,11 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
 
 `<image-thumbnail>` provides the following custom properties and mixins for styling:
 
-Custom property           | Description                                    | Default
---------------------------|------------------------------------------------|--------
-`--image-button-color`    | The style of the button containing the image.  | none
-`--image-highlight-color` | The background color of the highlighted image. | none
-`--image-highlight-style` | The style of the highlighted image.            | none
+Custom property                     | Description                                    | Default
+------------------------------------|------------------------------------------------|--------
+`--image-thumbnail-highlight-color` | The background color of the highlighted image. | none
+`--image-thumbnail-highlight-style` | The style of the highlighted image.            | none
+`--image-thumbnail-style`           | The style of the element containing the image. | none
 
 ### Dependencies
 

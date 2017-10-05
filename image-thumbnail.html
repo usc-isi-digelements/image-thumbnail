@@ -34,11 +34,11 @@ A Polymer Element showing a stylized image thumbnail with on-click behavior.
 
 `<image-thumbnail>` provides the following custom properties and mixins for styling:
 
-Custom property           | Description                                    | Default
---------------------------|------------------------------------------------|--------
-`--image-button-color`    | The style of the button containing the image.  | none
-`--image-highlight-color` | The background color of the highlighted image. | none
-`--image-highlight-style` | The style of the highlighted image.            | none
+Custom property                     | Description                                    | Default
+------------------------------------|------------------------------------------------|--------
+`--image-thumbnail-highlight-color` | The background color of the highlighted image. | none
+`--image-thumbnail-highlight-style` | The style of the highlighted image.            | none
+`--image-thumbnail-style`           | The style of the element containing the image. | none
 
 @demo demo/index.html
 -->
@@ -48,18 +48,18 @@ Custom property           | Description                                    | Def
     <style>
       :host {
         display: block;
-        height: 100px;
       }
 
       paper-button {
+        border-radius: 2px;
         margin: 0;
-        padding: 0;
-        @apply --image-button-style;
+        padding: 5px;
+        @apply --image-thumbnail-style;
       }
 
       .highlight {
-        background-color: var(--image-highlight-color);
-        @apply --image-highlight-style;
+        background-color: var(--image-thumbnail-highlight-color);
+        @apply --image-thumbnail-highlight-style;
       }
 
       iron-image {
