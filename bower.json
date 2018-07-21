@@ -9,7 +9,7 @@
     "polymer"
   ],
   "main": "image-thumbnail.html",
-  "homepage": "https://github.com/DigElements/image-thumbnail/",
+  "homepage": "https://github.com/usc-isi-digelements/image-thumbnail/",
   "ignore": [
     "/.*",
     "/test/"
